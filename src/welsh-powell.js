@@ -28,21 +28,21 @@ function countEdges(valence, edges) {
 
 function vertexValence(vertices, edges) {
     let valence = vertices.map(v => {v:0});
-    countEdges(valence, graph);
+    countEdges(valence, edges);
     valence.sort((a, b) => a.value > b.value);
     return valence;
 }
 
 function getVertexIndex(graph, vertex) {
-    return graph.vertices.findIndex(vertex);
+    return graph.vertices.indexOf(vertex);
 }
 
 function getColor(graph, vertex) {
-    return graph.colors[getVertexIndex(vertex)];
+    return graph.colors[getVertexIndex(graph, vertex)];
 }
 
 function isConnectedToColoredVertex(graph, vertex) {
-    let index = getVertexIndex(vertex);
+    let index = getVertexIndex(graph, vertex);
     let connected = new Set;
 
     graph.edges.forEach((e) => {
@@ -57,11 +57,11 @@ function colorStep(graph, valence) {
     let color = nextColor();
 
     // get index of first element
-    let vertexIndex = getVertexIndex(valence[0]);
+    let vertexIndex = getVertexIndex(graph, valence[0]);
     graph.colors[vertexIndex] = color;
 
     graph.vertices.forEach(x => {
-        vertexIndex = getVertexIndex(x);
+        vertexIndex = getVertexIndex(graph, x);
         // make sure not already colored
         if(!graph.colors[vertexIndex]) {
             // if it's not connected to a colored vertex

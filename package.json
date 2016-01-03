@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "./node_modules/.bin/babel -d lib/ src/",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-register",
     "prepublish": "npm run build"
   },
   "author": "rsk7",
@@ -12,6 +13,11 @@
   "devDependencies": {
     "babel": "^6.3.26",
     "babel-cli": "^6.3.17",
-    "babel-preset-es2015": "^6.3.13"
+    "babel-preset-es2015": "^6.3.13",
+    "babel-register": "^6.3.13",
+    "mocha": "^2.3.4"
+  },
+  "babel": {
+    "presets": "es2015"
   }
 }
