@@ -1,21 +1,21 @@
+var nextColorProvider = function(color = 0) { return () => color++; };
+
 // vertices = [a, b, c, d];
 // edges = [[a,b],[c,d],[d,d]];
 export function color({vertices = [], edges = [], colors = []}) {
-    var graph = { vertices, edges, colors };
+    let nextColor = nextColorProvider();
+    let graph = { vertices, edges, colors, nextColor };
     graph.colors = new Array(graph.vertices.length);
 
     // color
-    let valence = vertexValence(graph.vertices, graph.edges);
-    let remaining = colorStep(graph, valence);
+    let remaining = colorStep(graph);
     while(remaining.length) {
-        valence = vertexValence(remaining, graph.edges);
-        remaining = colorStep(graph, valence);
+        remaining = colorStep(graph, remaining);
     }
 
     return graph;
 }
 
-var nextColor = function(color = 0) { return () => color++; }();
 
 function countEdges(valence, edges) {
     edges.forEach(e => {
@@ -26,11 +26,19 @@ function countEdges(valence, edges) {
     });
 }
 
-function vertexValence(vertices, edges) {
-    let valence = vertices.map(v => {v:0});
+function maxValence(vertices, edges) {
+    let valence = new Object;
+    vertices.forEach(v => valence[v] = 0);
     countEdges(valence, edges);
-    valence.sort((a, b) => a.value > b.value);
-    return valence;
+
+    // swapping key value
+    let valueSwapped = new Object;
+    Object.keys(valence).forEach(k => {
+        valueSwapped[valence[k]] = k;
+    });
+
+    let max = Object.keys(valueSwapped).sort()[0];
+    return valueSwapped[max];
 }
 
 function getVertexIndex(graph, vertex) {
@@ -50,14 +58,15 @@ function isConnectedToColoredVertex(graph, vertex) {
         if (e[1] === vertex) connected.add(e[0]);
     });
 
-    [...connected].filter(x => getColor(graph, x)).length;
+    return [...connected].filter(x => getColor(graph, x) !== undefined).length;
 }
 
-function colorStep(graph, valence) {
-    let color = nextColor();
+function colorStep(graph, remaining = graph.vertices) {
+    let color = graph.nextColor();
+    let maxVertex = maxValence(remaining, graph.edges);
 
     // get index of first element
-    let vertexIndex = getVertexIndex(graph, valence[0]);
+    let vertexIndex = getVertexIndex(graph, maxVertex);
     graph.colors[vertexIndex] = color;
 
     graph.vertices.forEach(x => {
@@ -72,7 +81,8 @@ function colorStep(graph, valence) {
         }
     });
 
-    return graph.vertices.filter((x, i) => graph.colors[i]);
+    var remaining = graph.vertices.filter((x, i) => graph.colors[i] === undefined);
+    return remaining;
 }
 
 
