@@ -81,8 +81,7 @@ function colorStep(graph, remaining = graph.vertices) {
         }
     });
 
-    var remaining = graph.vertices.filter((x, i) => graph.colors[i] === undefined);
-    return remaining;
+    return graph.vertices.filter((x, i) => graph.colors[i] === undefined);
 }
 
 
