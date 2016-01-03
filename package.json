@@ -9,7 +9,7 @@
     "prepublish": "npm run build"
   },
   "author": "rsk7",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel": "^6.3.26",
     "babel-cli": "^6.3.17",
