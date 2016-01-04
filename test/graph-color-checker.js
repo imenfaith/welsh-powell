@@ -1,4 +1,7 @@
-export function check(graph) {
+export function check(graph, colors) {
+    graph.vertices = graph.vertices || [];
+    graph.edges = graph.edges || [];
+    graph.colors = colors;
     for(let i = 0; i < graph.vertices.length; i++) {
         if (!checkConnectedVertices(graph, graph.vertices[i])) {
             return false;
@@ -9,6 +12,7 @@ export function check(graph) {
 }
 
 function checkConnectedVertices(graph, vertex) {
+    graph.edges = graph.edges || [];
     var edges = graph.edges.filter(e => e[0] === vertex || e[1] === vertex);
 
     var vertexColor = getColor(graph, vertex);
