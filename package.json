@@ -1,6 +1,6 @@
 {
   "name": "welshpowell",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "graph coloring with welsh powell",
   "main": "lib/index.js",
   "scripts": {

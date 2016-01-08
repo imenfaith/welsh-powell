@@ -27,6 +27,7 @@ describe("welsh-powell", function() {
         var vertices = ['a', 'b', 'c'];
         var edges = [['a', 'b'], ['b', 'c']];
         var output = color({vertices, edges});
+        console.log(output);
         var colorSet = new Set(output.colors);
         assert([...colorSet].length === 2);
         assert(check(output));
