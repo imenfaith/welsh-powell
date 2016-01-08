@@ -1,5 +1,7 @@
-## welsh powell
-Graph coloring
+## Install
+```javascript
+npm install welshpowell --save-dev
+```
 
 ## Usage
 ```javascript
