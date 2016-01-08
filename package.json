@@ -1,6 +1,6 @@
 {
   "name": "welshpowell",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "graph coloring with welsh powell",
   "main": "lib/index.js",
   "scripts": {
@@ -19,5 +19,16 @@
   },
   "babel": {
     "presets": "es2015"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rsk7/welsh-powell.git"
+  },
+  "keywords": [
+    "graph",
+    "graph coloring",
+    "coloring",
+    "welsh",
+    "powell"
+  ],
 }
