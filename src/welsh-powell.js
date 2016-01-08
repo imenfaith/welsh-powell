@@ -13,7 +13,7 @@ export function color({vertices = [], edges = [], colors = []}) {
         remaining = colorStep(graph, remaining);
     }
 
-    return graph;
+    return graph.colors;
 }
 
 
