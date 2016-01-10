@@ -1,4 +1,4 @@
-export function check(graph, colors) {
+export default function check(graph, colors) {
     graph.vertices = graph.vertices || [];
     graph.edges = graph.edges || [];
     graph.colors = colors;

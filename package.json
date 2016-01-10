@@ -2,7 +2,7 @@
   "name": "welshpowell",
   "version": "1.0.1",
   "description": "graph coloring with welsh powell",
-  "main": "lib/index.js",
+  "main": "lib/welsh-powell.js",
   "scripts": {
     "build": "./node_modules/.bin/babel -d lib/ src/",
     "test": "./node_modules/.bin/mocha --compilers js:babel-register",
@@ -30,5 +30,8 @@
     "coloring",
     "welsh",
     "powell"
-  ]
+  ],
+  "dependencies": {
+    "graph-generator": "^1.0.0"
+  }
 }

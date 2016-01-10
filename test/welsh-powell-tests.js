@@ -1,7 +1,7 @@
-var assert = require("assert");
-import {color} from "../src/welsh-powell";
-import {generate} from "./graph-generator";
-import {check} from "./graph-color-checker";
+import assert from "assert";
+import generate from "graph-generator";
+import color from "../src/welsh-powell";
+import check from "./graph-color-checker";
 
 describe("welsh-powell", function() {
     it("graph with 1 vertex", function() {
