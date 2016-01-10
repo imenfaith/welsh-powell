@@ -5,7 +5,7 @@ npm install welshpowell --save-dev
 
 ## Usage
 ```javascript
-let color = require("welshpowell");
+import color from "welshpowell";
 
 let graph = {
     vertices: ['a', 'b', 'c'],
