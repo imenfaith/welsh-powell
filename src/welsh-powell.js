@@ -2,7 +2,7 @@ var nextColorProvider = function(color = 0) { return () => color++; };
 
 // vertices = [a, b, c, d];
 // edges = [[a,b],[c,d],[d,d]];
-export function color({vertices = [], edges = [], colors = []}) {
+export default function color({vertices = [], edges = [], colors = []}) {
     let nextColor = nextColorProvider();
     let graph = { vertices, edges, colors, nextColor };
     graph.colors = new Array(graph.vertices.length);
