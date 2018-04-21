@@ -2,7 +2,7 @@ var nextColorProvider = function(color = 0) { return () => color++; };
 
 // vertices = [a, b, c, d];
 // edges = [[a,b],[c,d],[d,d]];
-export default function color({vertices = [], edges = [], colors = []}) {
+module.exports{color:function({vertices = [], edges = [], colors = []}) {
     let nextColor = nextColorProvider();
     let graph = { vertices, edges, colors, nextColor };
     graph.colors = new Array(graph.vertices.length);
@@ -14,8 +14,8 @@ export default function color({vertices = [], edges = [], colors = []}) {
     }
 
     return graph.colors;
-}
-
+    }
+ }
 
 function countEdges(valence, edges) {
     edges.forEach(e => {
