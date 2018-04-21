@@ -5,8 +5,7 @@ npm install welshpowell --save-dev
 
 ## Usage
 ```javascript
-import color from "welshpowell";
-
+const color = require ('welsh-powell');
 let graph = {
     vertices: ['a', 'b', 'c'],
     edges: [['a', 'b'], ['b', 'c']]
@@ -15,7 +14,7 @@ let graph = {
 // returns an array with colors
 // matching the index of the vertices
 // passed in.
-let colors = color(graph);
+let colors = color.color(graph);
 
 console.log(colors);
 
